@@ -1,0 +1,97 @@
+:root{
+  --bg:#0b1220;
+  --panel:#0f1724;
+  --muted:#9ca3af;
+  --accent:#7c3aed;
+  --glass: rgba(255,255,255,0.04);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:linear-gradient(180deg,var(--bg),#020617);color:#e6eef8}
+.app-shell{display:flex;min-height:100vh}
+.sidebar{width:280px;padding:24px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-right:1px solid rgba(255,255,255,0.03)}
+/* Sidebar search and card tweaks */
+.search{ margin-top:12px }
+.search input{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:#fff}
+
+/* Sidebar title */
+.sidebar h2{font-size:22px;margin:0 0 12px 0;color:#fff}
+
+/* Recent card visual improvements */
+.quick-list.card { padding: 18px; border-radius: 12px; background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01)); }
+.recent-list li { display:flex; align-items:center; justify-content:space-between; padding:8px 0 }
+.recent-list li a{ color:var(--accent); font-weight:600 }
+.recent-list li .meta{ color:var(--muted); font-size:12px }
+
+/* Nav bar items (make them full-width bars) */
+.nav-bar { display:flex; flex-direction:column; gap:8px; margin-bottom:12px }
+.nav-item { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:10px; background:transparent; color:var(--muted); text-decoration:none }
+.nav-item .label { font-weight:700; color:#fff }
+.nav-item:hover { background: rgba(255,255,255,0.02); transform: translateX(4px); transition: transform .12s ease, background .12s ease }
+
+/* Recent bars */
+.recent-bar { display:flex; align-items:center; justify-content:space-between; width:100%; padding:10px 12px; border-radius:10px; background: rgba(255,255,255,0.01); transition: background .12s ease, transform .12s ease; text-decoration:none }
+.recent-bar:hover { background: rgba(255,255,255,0.02); transform: translateX(3px) }
+.recent-bar .title { color:var(--accent); font-weight:600 }
+.recent-bar .meta { color:var(--muted); font-size:12px }
+
+/* Ensure router-link/anchor states don't show underline in these sidebar bars */
+.nav-item, .nav-item:link, .nav-item:visited, .nav-item:hover, .nav-item:active,
+.recent-bar, .recent-bar:link, .recent-bar:visited, .recent-bar:hover, .recent-bar:active {
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+/* Also ensure nested spans don't inherit underlines */
+.nav-item .label, .recent-bar .title { text-decoration: none }
+.content{flex:1;padding:24px}
+.header{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-bottom:1px solid rgba(255,255,255,0.03)}
+.card{background:var(--panel);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.6)}
+.button{background:linear-gradient(90deg,var(--accent),#4f46e5);border:none;color:white;padding:8px 12px;border-radius:8px;cursor:pointer}
+.link{color:var(--accent);text-decoration:none}
+.page-title{font-weight:700;color:#fff}
+.page-list li{margin-bottom:16px}
+.node-badge{display:inline-block;background:var(--glass);padding:4px 8px;border-radius:999px;color:var(--muted);font-size:12px}
+/* Polished button styles */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  box-shadow: 0 6px 18px rgba(79,70,229,0.12);
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+}
+.button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(79,70,229,0.14) }
+.button.secondary { background: transparent; border: 1px solid rgba(255,255,255,0.04); color: var(--muted); box-shadow: none }
+.button.ghost { background: transparent; color: var(--accent); padding: 6px 10px }
+
+/* Polished link styles */
+.link { color: var(--accent); text-decoration: none; border-bottom: 1px dashed rgba(124,58,237,0.12); padding-bottom: 1px }
+.link:hover { color: #a78bfa }
+
+/* Card and list updates */
+.card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding: 18px; border-radius: 14px }
+.recent-list { list-style: none; padding: 0; margin: 0 }
+.recent-list li { padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.02); display:flex; align-items:center; justify-content:space-between }
+.recent-list li a { color: var(--accent) }
+
+/* Page list item */
+.page-item { padding: 16px; border-radius: 10px; background: rgba(255,255,255,0.01); margin-bottom: 12px }
+.page-item .meta { color: var(--muted); font-size: 13px }
+/* small animations */
+.fadeIn{animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Router transitions */
+.fade-enter-active, .fade-leave-active { transition: opacity .25s ease, transform .25s ease }
+.fade-enter-from, .fade-leave-to { opacity: 0; transform: translateY(8px) }
+
+/* Editor highlight */
+.highlight { box-shadow: 0 0 0 4px rgba(124,58,237,0.12); transform: scale(1.01); transition: transform .18s ease, box-shadow .18s ease }
+
+/* Cytoscape tooltip overlay */
+.cy-tooltip { position: absolute; pointer-events: none; background: rgba(2,6,23,0.9); color: #e6eef8; padding: 8px 10px; border-radius: 8px; max-width: 300px; z-index: 1000; font-size: 13px; box-shadow: 0 6px 20px rgba(2,6,23,0.6) }
+
+/* Button micro-interaction */
+.button:active { transform: translateY(1px) scale(.997) }
